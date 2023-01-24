@@ -9,6 +9,7 @@ import {
 import { Layout } from "./pages/Layout";
 import { Error } from "./pages/Error";
 import { Pokemon } from "./pages/PokemonProfile";
+import { POKE_COLORS } from "./constants/colors";
 
 const theme = createTheme({
   typography: {
@@ -18,8 +19,8 @@ const theme = createTheme({
     },
   },
   palette: {
-    background: {
-      default: "red",
+    primary: {
+      main: `${POKE_COLORS.cerulean_blue}`,
     },
   },
 });
