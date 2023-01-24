@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import {
   fetchKantoPokemonList,
   fetchPokemonDataByUrl,
+  getPokemonPictureURL,
 } from "../api/api";
 import { POKE_COLORS } from "../constants/colors";
 import Loading from "./Loading";
@@ -105,7 +106,9 @@ const PokemonList = () => {
                     maxHeight: "fit-content",
                   }}
                   component="img"
-                  image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${poke.id}.png`}
+                  image={getPokemonPictureURL(
+                    poke.id
+                  )}
                   alt={poke.name}
                 />
 

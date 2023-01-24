@@ -25,3 +25,7 @@ export const fetchPokemonDataById = (id) => {
     response.json()
   );
 };
+
+export const getPokemonPictureURL = (poke_id) => {
+  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${poke_id}.png`;
+};
