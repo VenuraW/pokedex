@@ -80,11 +80,16 @@ const PokemonList = () => {
           >
             <Card
               sx={{
+                borderRadius: 0,
+                boxShadow: `-15px 0 0 0 black,
+                15px 0 0 0 black,
+                0 -15px 0 0 black,
+                0 15px 0 0 black`,
                 "&.MuiCard-root:hover": {
-                  boxShadow: `0px 0px 0px 8px ${alpha(
-                    POKE_COLORS.golden_yellow,
-                    0.8
-                  )}`,
+                  boxShadow: `-15px 0 0 0 ${POKE_COLORS.golden_yellow},
+                  15px 0 0 0 ${POKE_COLORS.golden_yellow},
+                  0 -15px 0 0 ${POKE_COLORS.golden_yellow},
+                  0 15px 0 0 ${POKE_COLORS.golden_yellow}`,
                 },
               }}
             >

@@ -21,7 +21,7 @@ import {
 import Loading from "../Loading";
 import * as S from "./ProfileCard.styles";
 
-const ProfileCard = () => {
+export const ProfileCard = () => {
   const navigate = useNavigate();
   let { pokemonId } = useParams();
   const [pokeData, setPokeData] = useState({});
@@ -48,7 +48,6 @@ const ProfileCard = () => {
         <S.ProfileGrid container>
           <Grid item>
             <S.ProfileBackButton
-              variant="outlined"
               onClick={() => navigate("/")}
             >
               Back

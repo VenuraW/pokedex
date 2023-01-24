@@ -6,16 +6,14 @@ import {
 } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { POKE_COLORS } from "../constants/colors";
+import { POKE_COLORS } from "../../constants/colors";
+import * as S from "./Header.styles";
 
 export const Header = () => {
   const navigate = useNavigate();
 
   return (
-    <AppBar
-      position="static"
-      sx={{ bgcolor: POKE_COLORS.red }}
-    >
+    <S.HeaderAppBar elevation={0}>
       <Container maxWidth="xl">
         <Toolbar
           disableGutters
@@ -43,6 +41,6 @@ export const Header = () => {
           </Typography>
         </Toolbar>
       </Container>
-    </AppBar>
+    </S.HeaderAppBar>
   );
 };

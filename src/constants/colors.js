@@ -4,4 +4,7 @@ export const POKE_COLORS = {
   cerulean_blue: "#3B4CCA",
   golden_yellow: "#FFDE00",
   gold_foil: "#B3A125",
+  aero: "#68BEE8",
 };
+
+export const borderColor = "black";

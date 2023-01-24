@@ -8,14 +8,19 @@ import {
   Grid,
 } from "@mui/material";
 
-export const ProfileCardContainer = styled(Card)({
-  margin: "auto",
-  maxWidth: "fit-content",
-  postion: "relative",
-  justifySelf: "center",
-  marginTop: "2rem",
-  marginBottom: "2rem",
-});
+export const ProfileCardContainer = styled(Card)(
+  ({ theme }) => ({
+    margin: "auto",
+    maxWidth: "fit-content",
+    postion: "relative",
+    justifySelf: "center",
+    marginTop: "2rem",
+    marginBottom: "2rem",
+    borderRadius: 0,
+    boxShadow: `${theme.pixel.shadow}`,
+    "&.MuiCard-root:hover": `${theme.pixel.selectedShadow}`,
+  })
+);
 
 export const ProfileCardContent = styled(
   CardContent
@@ -28,11 +33,15 @@ export const ProfileGrid = styled(Grid)({
   marginTop: "2rem",
 });
 
-export const ProfileBackButton = styled(Button)({
-  position: "absolute",
-  left: "1rem",
-  top: "1rem",
-});
+export const ProfileBackButton = styled(Button)(
+  ({ theme }) => ({
+    position: "absolute",
+    left: "1rem",
+    top: "1rem",
+    borderRadius: 0,
+    boxShadow: `${theme.pixel.buttonShadow}`,
+  })
+);
 
 export const ProfileImage = styled(`img`)({
   marginTop: "1rem",

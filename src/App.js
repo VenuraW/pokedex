@@ -6,10 +6,14 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import { Layout } from "./pages/Layout";
+import Layout from "./components/Layout/index";
 import { Error } from "./pages/Error";
-import { Pokemon } from "./pages/PokemonProfile";
-import { POKE_COLORS } from "./constants/colors";
+import PokemonProfile from "./components/PokemonProfile/index";
+import {
+  borderColor,
+  POKE_COLORS,
+} from "./constants/colors";
+import { sizes } from "./constants/sizes";
 
 const theme = createTheme({
   typography: {
@@ -22,6 +26,24 @@ const theme = createTheme({
     primary: {
       main: `${POKE_COLORS.cerulean_blue}`,
     },
+    pokemon: POKE_COLORS,
+  },
+  sizes: sizes,
+  pixel: {
+    border: `${sizes.pixelBorderMedium} solid ${borderColor}`,
+    borderColor: borderColor,
+    shadow: `-${sizes.pixelBorderMedium} 0 0 0 ${borderColor},
+    ${sizes.pixelBorderMedium} 0 0 0 ${borderColor},
+    0 -${sizes.pixelBorderMedium} 0 0 ${borderColor},
+    0 ${sizes.pixelBorderMedium} 0 0 ${borderColor}`,
+    selectedShadow: `-${sizes.pixelBorderMedium} 0 0 0 ${POKE_COLORS.golden_yellow},
+    ${sizes.pixelBorderMedium} 0 0 0 ${POKE_COLORS.golden_yellow},
+    0 -${sizes.pixelBorderMedium} 0 0 ${POKE_COLORS.golden_yellow},
+    0 ${sizes.pixelBorderMedium} 0 0 ${POKE_COLORS.golden_yellow}`,
+    buttonShadow: `-${sizes.pixelBorderSmall} 0 0 0 ${POKE_COLORS.cerulean_blue},
+    ${sizes.pixelBorderSmall} 0 0 0 ${POKE_COLORS.cerulean_blue},
+    0 ${sizes.pixelBorderSmall} 0 0 ${POKE_COLORS.cerulean_blue},
+    0 -${sizes.pixelBorderSmall} 0 0 ${POKE_COLORS.cerulean_blue}`,
   },
 });
 
@@ -33,7 +55,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/:pokemonId",
-    element: <Pokemon />,
+    element: <PokemonProfile />,
   },
 ]);
 
@@ -44,11 +66,7 @@ function App() {
       <div
         style={{
           minHeight: "100vh",
-          background: `linear-gradient(
-      rgba(0, 0, 0, 0.4),
-      rgba(0, 0, 0, 0.4)
-    ),
-    url("https://w0.peakpx.com/wallpaper/654/738/HD-wallpaper-grid-black-dark-green-line-square-texture.jpg")`,
+          background: POKE_COLORS.aero,
         }}
       >
         <RouterProvider router={router} />
