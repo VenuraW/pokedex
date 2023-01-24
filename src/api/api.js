@@ -1,6 +1,9 @@
 const POKEMON_API =
   "https://pokeapi.co/api/v2/pokemon";
 
+const POKEMON_IMAGE =
+  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon";
+
 const POKE_LIMIT = 151;
 
 export const fetchKantoPokemonList = () => {
@@ -27,5 +30,5 @@ export const fetchPokemonDataById = (id) => {
 };
 
 export const getPokemonPictureURL = (poke_id) => {
-  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${poke_id}.png`;
+  return `${POKEMON_IMAGE}/${poke_id}.png`;
 };
