@@ -7,8 +7,8 @@ import {
   fetchKantoPokemonList,
   fetchPokemonDataByUrl,
   getPokemonPictureURL,
-} from "../../api/api";
-import Loading from "../Loading/index";
+} from "../../../api/api";
+import Loading from "../../Loading/index";
 import * as S from "./PokemonList.styles";
 
 const PokemonList = () => {

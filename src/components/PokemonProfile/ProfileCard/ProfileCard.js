@@ -10,8 +10,8 @@ import {
 import {
   fetchPokemonDataById,
   getPokemonPictureURL,
-} from "../../api/api";
-import Loading from "../Loading/index";
+} from "../../../api/api";
+import Loading from "../../Loading/index";
 import * as S from "./ProfileCard.styles";
 
 export const ProfileCard = () => {

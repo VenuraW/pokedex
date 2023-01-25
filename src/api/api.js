@@ -10,27 +10,31 @@ export const fetchKantoPokemonList = () => {
   let url =
     POKEMON_API + "?limit=" + String(POKE_LIMIT);
 
-  return fetch(url)
-    .then((response) => response.json())
-    .catch((error) => {
-      console.error(error);
-    });
+  return fetchPokeData(url);
 };
 
+// Fetch Pokemon Data by URL
 export const fetchPokemonDataByUrl = (url) => {
-  return fetch(url)
-    .then((response) => response.json())
-    .catch((error) => {
-      console.error(error);
+  return fetchPokeData(url);
+};
+
+const fetchPokeData = (url) => {
+  try {
+    return fetch(url).then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        console.log(response);
+      }
     });
+  } catch (error) {
+    console.log("hello");
+  }
 };
 
 export const fetchPokemonDataById = (id) => {
   let url = POKEMON_API + "/" + String(id);
-
-  return fetch(url)
-    .then((response) => response.json())
-    .catch((error) => console.error(error));
+  return fetchPokeData(url);
 };
 
 export const getPokemonPictureURL = (poke_id) => {

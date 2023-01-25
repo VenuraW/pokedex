@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Footer from "../Footer/index";
 import Header from "../Header/index";
-import ProfileCard from "../ProfileCard/index";
+import ProfileCard from "./ProfileCard/index";
 import * as S from "./PokemonProfile.styles";
 
 export const PokemonProfile = () => {
