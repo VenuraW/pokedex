@@ -1,4 +1,3 @@
-import { Container } from "@mui/material";
 import React, { useEffect } from "react";
 import Footer from "../Footer/index";
 import Header from "../Header/index";

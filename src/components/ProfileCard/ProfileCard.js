@@ -1,11 +1,4 @@
-import {
-  Button,
-  Card,
-  CardContent,
-  Grid,
-  Typography,
-} from "@mui/material";
-import { Box, Container } from "@mui/system";
+import { Grid, Typography } from "@mui/material";
 import React, {
   useEffect,
   useState,
@@ -18,7 +11,7 @@ import {
   fetchPokemonDataById,
   getPokemonPictureURL,
 } from "../../api/api";
-import Loading from "../Loading";
+import Loading from "../Loading/index";
 import * as S from "./ProfileCard.styles";
 
 export const ProfileCard = () => {

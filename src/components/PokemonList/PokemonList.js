@@ -1,12 +1,3 @@
-import styled from "@emotion/styled";
-import {
-  alpha,
-  Card,
-  CardActionArea,
-  CardMedia,
-  Grid,
-  Typography,
-} from "@mui/material";
 import React, {
   useEffect,
   useState,
@@ -17,8 +8,7 @@ import {
   fetchPokemonDataByUrl,
   getPokemonPictureURL,
 } from "../../api/api";
-import { POKE_COLORS } from "../../constants/colors";
-import Loading from "../Loading";
+import Loading from "../Loading/index";
 import * as S from "./PokemonList.styles";
 
 const PokemonList = () => {
@@ -28,8 +18,8 @@ const PokemonList = () => {
   // const styles = useStyles();
 
   const fetchData = async () => {
-    console.log("fetch");
     const list = await fetchKantoPokemonList();
+    console.log(list);
     list.results.forEach(async (pokemon) => {
       const data = await fetchPokemonDataByUrl(
         pokemon.url

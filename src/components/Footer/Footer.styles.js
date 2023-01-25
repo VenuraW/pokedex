@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import { Paper } from "@mui/material";
 import { Box } from "@mui/system";
-import { borderColor } from "../../constants/colors";
 
 export const FooterPaper = styled(Paper)(
   ({ theme }) => ({

@@ -1,7 +1,6 @@
-import { Paper, Typography } from "@mui/material";
-import { Box, Container } from "@mui/system";
+import { Typography } from "@mui/material";
+import { Container } from "@mui/system";
 import React from "react";
-import { POKE_COLORS } from "../../constants/colors";
 import * as S from "./Footer.styles";
 
 export const Footer = () => {
