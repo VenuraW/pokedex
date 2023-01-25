@@ -112,7 +112,10 @@ export const ProfileCard = () => {
                   {pokeData?.abilities.map(
                     (abilities, index) => {
                       return (
-                        <S.ProfileValuesBox display="inline">
+                        <S.ProfileValuesBox
+                          display="inline"
+                          key={index}
+                        >
                           {abilities.ability.name}
                           {index !==
                           pokeData?.abilities
