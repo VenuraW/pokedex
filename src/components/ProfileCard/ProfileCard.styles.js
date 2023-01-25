@@ -18,7 +18,6 @@ export const ProfileCardContainer = styled(Card)(
     marginBottom: "2rem",
     borderRadius: 0,
     boxShadow: `${theme.pixel.shadow}`,
-    "&.MuiCard-root:hover": `${theme.pixel.selectedShadow}`,
   })
 );
 
