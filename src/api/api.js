@@ -11,7 +11,9 @@ export const fetchKantoPokemonList = () => {
     POKEMON_API + "?limit=" + String(POKE_LIMIT);
 
   return fetch(url).then((response) =>
-    response.json()
+    response.json().catch((error) => {
+      console.error(error);
+    })
   );
 };
 
@@ -25,7 +27,9 @@ export const fetchPokemonDataById = (id) => {
   let url = POKEMON_API + "/" + String(id);
 
   return fetch(url).then((response) =>
-    response.json()
+    response
+      .json()
+      .catch((error) => console.error(error))
   );
 };
 
