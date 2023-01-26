@@ -1,19 +1,14 @@
 import {
-  ThemeProvider,
   createTheme,
+  ThemeProvider,
 } from "@mui/material/styles";
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import Layout from "./components/Layout/index";
-import { Error } from "./pages/Error";
-import PokemonProfile from "./components/PokemonProfile/index";
+import { RouterProvider } from "react-router-dom";
 import {
   borderColor,
   POKE_COLORS,
 } from "./constants/colors";
 import { sizes } from "./constants/sizes";
+import { router } from "./routes/routes";
 
 const theme = createTheme({
   typography: {
@@ -43,43 +38,32 @@ const theme = createTheme({
     selectedShadow: `-${sizes.pixelBorderMedium} 0 0 0 ${POKE_COLORS.golden_yellow},
     ${sizes.pixelBorderMedium} 0 0 0 ${POKE_COLORS.golden_yellow},
     0 -${sizes.pixelBorderMedium} 0 0 ${POKE_COLORS.golden_yellow},
-    0 ${sizes.pixelBorderMedium} 0 0 ${POKE_COLORS.golden_yellow} 
+    0 ${sizes.pixelBorderMedium} 0 0 ${POKE_COLORS.golden_yellow}, 
     -${sizes.pixelBorderSmall} -${sizes.pixelBorderSmall} 0 0 ${POKE_COLORS.golden_yellow},
     ${sizes.pixelBorderSmall} ${sizes.pixelBorderSmall} 0 0 ${POKE_COLORS.golden_yellow},
     -${sizes.pixelBorderSmall} ${sizes.pixelBorderSmall} 0 0 ${POKE_COLORS.golden_yellow},
-    ${sizes.pixelBorderSmall} -${sizes.pixelBorderSmall} 0 0 ${POKE_COLORS.golden_yellow},`,
+    ${sizes.pixelBorderSmall} -${sizes.pixelBorderSmall} 0 0 ${POKE_COLORS.golden_yellow}`,
     buttonShadow: `-${sizes.pixelBorderSmall} 0 0 0 ${POKE_COLORS.cerulean_blue},
     ${sizes.pixelBorderSmall} 0 0 0 ${POKE_COLORS.cerulean_blue},
     0 ${sizes.pixelBorderSmall} 0 0 ${POKE_COLORS.cerulean_blue},
     0 -${sizes.pixelBorderSmall} 0 0 ${POKE_COLORS.cerulean_blue},
-    ${sizes.pixelBorderExtraSmall} ${sizes.pixelBorderExtraSmall} 0 0 ${POKE_COLORS.cerulean_blue}`,
+    ${sizes.pixelBorderExtraSmall} ${sizes.pixelBorderExtraSmall} 0 0 ${POKE_COLORS.cerulean_blue},
+    -${sizes.pixelBorderExtraSmall} ${sizes.pixelBorderExtraSmall} 0 0 ${POKE_COLORS.cerulean_blue},
+    -${sizes.pixelBorderExtraSmall} -${sizes.pixelBorderExtraSmall} 0 0 ${POKE_COLORS.cerulean_blue},
+    ${sizes.pixelBorderExtraSmall} -${sizes.pixelBorderExtraSmall} 0 0 ${POKE_COLORS.cerulean_blue}`,
   },
 });
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />,
-    errorElement: <Error />,
-  },
-  {
-    path: "/:pokemonId",
-    element: <PokemonProfile />,
-  },
-]);
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      {/* <Header /> */}
       <div
         style={{
           minHeight: "100vh",
-          background: POKE_COLORS.aero,
+          background: theme.palette.pokemon.aero,
         }}
       >
         <RouterProvider router={router} />
-        {/* <Footer /> */}
       </div>
     </ThemeProvider>
   );
