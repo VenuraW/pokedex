@@ -13,31 +13,18 @@ export const Header = () => {
   return (
     <S.HeaderAppBar elevation={0}>
       <Container maxWidth="xl">
-        <Toolbar
+        <S.HeaderToolbar
           disableGutters
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            cursor: "pointer",
-          }}
           onClick={() => navigate("/")}
         >
-          <img
-            style={{
-              maxWidth: "10rem",
-              marginTop: "1rem",
-            }}
+          <S.HeaderLogo
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png"
             alt="pokemon-logo"
           />
-          <Typography
-            sx={{ marginBottom: "1rem" }}
-            variant="h6"
-          >
+          <S.HeaderTypography variant="h6">
             PokeDex
-          </Typography>
-        </Toolbar>
+          </S.HeaderTypography>
+        </S.HeaderToolbar>
       </Container>
     </S.HeaderAppBar>
   );
