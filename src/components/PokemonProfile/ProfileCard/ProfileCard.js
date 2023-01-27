@@ -36,7 +36,9 @@ export const ProfileCard = () => {
   if (loading) return <Loading />;
 
   return (
-    <S.ProfileCardContainer>
+    <S.ProfileCardContainer
+      types={pokeData.types}
+    >
       <S.ProfileCardContent>
         <S.ProfileGrid container>
           <Grid item>
@@ -48,9 +50,9 @@ export const ProfileCard = () => {
           </Grid>
           <Grid item>
             <S.ProfileImage
-              src={getPokemonPictureURL(
-                pokemonId
-              )}
+              src={
+                pokeData.sprites["front_default"]
+              }
               alt="pokemon-profile-image"
             />
           </Grid>

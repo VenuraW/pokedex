@@ -7,9 +7,10 @@ import {
   Container,
   Grid,
 } from "@mui/material";
+import { getColorsFromTypes } from "../../../constants/colors";
 
 export const ProfileCardContainer = styled(Card)(
-  ({ theme }) => ({
+  ({ theme, types }) => ({
     margin: "auto",
     maxWidth: "fit-content",
     postion: "relative",
@@ -18,6 +19,7 @@ export const ProfileCardContainer = styled(Card)(
     marginBottom: "2rem",
     borderRadius: 0,
     boxShadow: `${theme.pixel.shadow}`,
+    background: `${getColorsFromTypes(types)}`,
   })
 );
 

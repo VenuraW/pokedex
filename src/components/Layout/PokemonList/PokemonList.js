@@ -15,11 +15,9 @@ const PokemonList = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [pokeData, setPokeData] = useState([]);
-  // const styles = useStyles();
 
   const fetchData = async () => {
     const list = await fetchKantoPokemonList();
-    console.log(list);
     list.results.forEach(async (pokemon) => {
       const data = await fetchPokemonDataByUrl(
         pokemon.url
@@ -48,7 +46,7 @@ const PokemonList = () => {
       {pokeData?.map((poke, index) => {
         return (
           <S.PokemonListGridItem item key={index}>
-            <S.PokemonListCard>
+            <S.PokemonListCard types={poke.types}>
               <S.PokemonListCardActionArea
                 onClick={() =>
                   navigate("/" + poke.id)
@@ -56,9 +54,9 @@ const PokemonList = () => {
               >
                 <S.PokemonListCardMedia
                   component="img"
-                  image={getPokemonPictureURL(
-                    poke.id
-                  )}
+                  image={
+                    poke.sprites["front_default"]
+                  }
                   alt={poke.name}
                 />
 

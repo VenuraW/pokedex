@@ -6,6 +6,11 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
+import {
+  getColorsFromTypes,
+  POKE_COLORS,
+  typesColorMapping,
+} from "../../../constants/colors";
 
 export const PokemonListGridContainer = styled(
   Grid
@@ -28,12 +33,13 @@ export const PokemonListGridItem = styled(Grid)({
 });
 
 export const PokemonListCard = styled(Card)(
-  ({ theme }) => ({
+  ({ theme, types }) => ({
     borderRadius: 0,
     boxShadow: `${theme.pixel.shadow}`,
     "&.MuiCard-root:hover": {
       boxShadow: `${theme.pixel.selectedShadow}`,
     },
+    background: `${getColorsFromTypes(types)}`,
   })
 );
 
