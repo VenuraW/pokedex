@@ -39,7 +39,7 @@ export const PokemonListCard = styled(Card)(
     "&.MuiCard-root:hover": {
       boxShadow: `${theme.pixel.selectedShadow}`,
     },
-    background: `${getColorsFromTypes(types)}`,
+    // background: `${getColorsFromTypes(types)}`,
   })
 );
 
