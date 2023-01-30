@@ -7,7 +7,7 @@ import {
   Container,
   Grid,
 } from "@mui/material";
-import { getColorsFromTypes } from "../../../constants/colors";
+import { getShadow } from "../../../constants/colors";
 
 export const ProfileCardContainer = styled(Card)(
   ({ theme, types }) => ({
@@ -18,7 +18,11 @@ export const ProfileCardContainer = styled(Card)(
     marginTop: "2rem",
     marginBottom: "2rem",
     borderRadius: 0,
-    boxShadow: `${theme.pixel.shadow}`,
+    boxShadow: `${getShadow(
+      theme.sizes.pixelBorderMedium,
+      theme.sizes.pixelBorderSmall,
+      theme.palette.pokemon.black
+    )}`,
   })
 );
 
@@ -39,7 +43,11 @@ export const ProfileBackButton = styled(Button)(
     left: "1rem",
     top: "1rem",
     borderRadius: 0,
-    boxShadow: `${theme.pixel.buttonShadow}`,
+    boxShadow: `${getShadow(
+      theme.sizes.pixelBorderSmall,
+      theme.sizes.pixelBorderExtraSmall,
+      theme.palette.pokemon.cerulean_blue
+    )}`,
   })
 );
 

@@ -7,11 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Container } from "@mui/system";
-import {
-  getColorsFromTypes,
-  POKE_COLORS,
-  typesColorMapping,
-} from "../../../constants/colors";
+import { getShadow } from "../../../constants/colors";
 
 export const PokemonListGridContainer = styled(
   Grid
@@ -34,13 +30,21 @@ export const PokemonListGridItem = styled(Grid)({
 });
 
 export const PokemonListCard = styled(Card)(
-  ({ theme, types }) => ({
+  ({ theme, color }) => ({
     borderRadius: 0,
-    boxShadow: `${theme.pixel.shadow}`,
+    boxShadow: `${getShadow(
+      theme.sizes.pixelBorderMedium,
+      theme.sizes.pixelBorderSmall,
+      theme.palette.pokemon.black
+    )}`,
     "&.MuiCard-root:hover": {
-      boxShadow: `${theme.pixel.selectedShadow}`,
+      boxShadow: `${getShadow(
+        theme.sizes.pixelBorderMedium,
+        theme.sizes.pixelBorderSmall,
+        theme.palette.pokemon.golden_yellow
+      )}`,
     },
-    // background: `${getColorsFromTypes(types)}`,
+    background: `${console.log(color)}`,
   })
 );
 
