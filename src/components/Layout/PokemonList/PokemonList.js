@@ -6,18 +6,19 @@ import { useNavigate } from "react-router-dom";
 import {
   fetchKantoPokemonList,
   fetchPokemonDataByUrl,
-  getPokemonPictureURL,
 } from "../../../api/api";
 import Loading from "../../Loading/index";
-import * as S from "./PokemonList.styles";
-import electric from "../../../assets/types/electric.png";
-import { Container } from "@mui/system";
 import PokemonType from "../../PokemonType";
+import * as S from "./PokemonList.styles";
 
-const PokemonList = () => {
+const PokemonList = ({ search }) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [pokeData, setPokeData] = useState([]);
+  const [colors, setColors] = useState({});
+  const [filterData, setFilterData] = useState(
+    []
+  );
 
   const fetchData = async () => {
     const list = await fetchKantoPokemonList();
@@ -26,6 +27,10 @@ const PokemonList = () => {
         pokemon.url
       );
       await setPokeData((pastPoke) => [
+        ...pastPoke,
+        data,
+      ]);
+      await setFilterData((pastPoke) => [
         ...pastPoke,
         data,
       ]);
@@ -38,7 +43,27 @@ const PokemonList = () => {
     // eslint-disable-next-line
   }, []);
 
+  useEffect(() => {
+    if (search.length > 0) {
+      const searchData = pokeData.filter((poke) =>
+        poke.name
+          .toLowerCase()
+          .startsWith(search.toLowerCase())
+      );
+      setFilterData(searchData);
+    } else {
+      setFilterData(pokeData);
+    }
+  }, [search]);
+
   if (loading) return <Loading />;
+
+  const setPokeColor = async (id, color) => {
+    let newColor = {};
+    newColor[id] = color[2];
+    // console.log(colors);
+    await setColors({ ...colors, ...newColor });
+  };
 
   return (
     <S.PokemonListGridContainer
@@ -46,37 +71,41 @@ const PokemonList = () => {
       spacing={{ xs: 4, md: 6 }}
       columns={{ xs: 2, sm: 6, md: 10 }}
     >
-      {pokeData?.map((poke, index) => {
+      {filterData?.map((poke, index) => {
         return (
           <S.PokemonListGridItem item key={index}>
-            <S.PokemonListCard>
-              <S.PokemonListCardActionArea
-                onClick={() =>
-                  navigate("/" + poke.id)
-                }
-              >
-                <S.PokemonListCardMedia
-                  component="img"
-                  image={
-                    poke.sprites["front_default"]
+            {
+              <S.PokemonListCard color={colors}>
+                <S.PokemonListCardActionArea
+                  onClick={() =>
+                    navigate("/" + poke.id)
                   }
-                  alt={poke.name}
-                />
-                <PokemonType
-                  types={poke.types}
-                  sx={{
-                    justifyContent:
-                      "space-around",
-                  }}
-                />
-                <S.PokemonListCardTypography
-                  gutterBottom
-                  variant="h6"
                 >
-                  {poke.name}
-                </S.PokemonListCardTypography>
-              </S.PokemonListCardActionArea>
-            </S.PokemonListCard>
+                  <S.PokemonListCardMedia
+                    component="img"
+                    image={
+                      poke.sprites[
+                        "front_default"
+                      ]
+                    }
+                    alt={poke.name}
+                  />
+                  <PokemonType
+                    types={poke.types}
+                    sx={{
+                      justifyContent:
+                        "space-around",
+                    }}
+                  />
+                  <S.PokemonListCardTypography
+                    gutterBottom
+                    variant="h6"
+                  >
+                    {poke.name}
+                  </S.PokemonListCardTypography>
+                </S.PokemonListCardActionArea>
+              </S.PokemonListCard>
+            }
           </S.PokemonListGridItem>
         );
       })}

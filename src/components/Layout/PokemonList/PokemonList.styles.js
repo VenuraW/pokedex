@@ -44,7 +44,7 @@ export const PokemonListCard = styled(Card)(
         theme.palette.pokemon.golden_yellow
       )}`,
     },
-    background: `${console.log(color)}`,
+    // background: `${console.log(color)}`,
   })
 );
 
