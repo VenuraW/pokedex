@@ -12,6 +12,7 @@ import {
   getPokemonPictureURL,
 } from "../../../api/api";
 import Loading from "../../Loading/index";
+import PokemonType from "../../PokemonType";
 import * as S from "./ProfileCard.styles";
 
 export const ProfileCard = () => {
@@ -61,6 +62,14 @@ export const ProfileCard = () => {
               <Typography variant="h2">
                 #{pokeData?.id} {pokeData?.name}
               </Typography>
+              <PokemonType
+                sx={{
+                  marginTop: "1rem",
+                  justifyContent: "flex-start",
+                  paddingLeft: "0!important",
+                }}
+                types={pokeData.types}
+              />
               <S.ProfileDescriptionContainer
                 disableGutters
               >

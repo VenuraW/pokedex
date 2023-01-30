@@ -6,6 +6,7 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
+import { Container } from "@mui/system";
 import {
   getColorsFromTypes,
   POKE_COLORS,
@@ -42,6 +43,15 @@ export const PokemonListCard = styled(Card)(
     // background: `${getColorsFromTypes(types)}`,
   })
 );
+
+export const PokemonListTypeContainer = styled(
+  Container
+)({
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-around",
+  columnGap: "0.5rem",
+});
 
 export const PokemonListCardMedia = styled(
   CardMedia

@@ -10,6 +10,9 @@ import {
 } from "../../../api/api";
 import Loading from "../../Loading/index";
 import * as S from "./PokemonList.styles";
+import electric from "../../../assets/types/electric.png";
+import { Container } from "@mui/system";
+import PokemonType from "../../PokemonType";
 
 const PokemonList = () => {
   const navigate = useNavigate();
@@ -46,7 +49,7 @@ const PokemonList = () => {
       {pokeData?.map((poke, index) => {
         return (
           <S.PokemonListGridItem item key={index}>
-            <S.PokemonListCard types={poke.types}>
+            <S.PokemonListCard>
               <S.PokemonListCardActionArea
                 onClick={() =>
                   navigate("/" + poke.id)
@@ -59,7 +62,13 @@ const PokemonList = () => {
                   }
                   alt={poke.name}
                 />
-
+                <PokemonType
+                  types={poke.types}
+                  sx={{
+                    justifyContent:
+                      "space-around",
+                  }}
+                />
                 <S.PokemonListCardTypography
                   gutterBottom
                   variant="h6"
