@@ -1,11 +1,5 @@
-import {
-  Input,
-  InputAdornment,
-  Paper,
-} from "@mui/material";
 import React from "react";
 import * as S from "./SearchBar.styles";
-import SearchIcon from "@mui/icons-material/Search";
 
 export const SearchBar = ({
   search,
@@ -14,19 +8,15 @@ export const SearchBar = ({
   return (
     <S.SearchBarContainer>
       <S.SearchBarPaper>
-        <Input
-          disableUnderline
+        <S.SearchTextField
           defaultValue={search}
-          autoComplete={false}
           onChange={(e) =>
             setSearch(e.target.value)
           }
           id="standard-adornment-search"
-          endAdornment={
-            <InputAdornment position="end">
-              <SearchIcon />
-            </InputAdornment>
-          }
+          variant="standard"
+          placeholder="search"
+          InputProps={{ disableUnderline: true }}
           aria-describedby="standard-search-helper-text"
           inputProps={{
             "aria-label": "search",

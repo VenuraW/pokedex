@@ -1,10 +1,14 @@
 import styled from "@emotion/styled";
-import { Container, Paper } from "@mui/material";
+import {
+  Container,
+  Paper,
+  TextField,
+} from "@mui/material";
 import { getShadow } from "../../../constants/colors";
 
 export const SearchBarPaper = styled(Paper)(
   ({ theme }) => ({
-    width: "fit-content",
+    width: "100%",
     borderRadius: 0,
     display: "flex",
     justifyContent: "flex-end",
@@ -19,8 +23,15 @@ export const SearchBarPaper = styled(Paper)(
 export const SearchBarContainer = styled(
   Container
 )({
-  maxWidth: "100% !important",
   display: "flex",
-  justifyContent: "flex-end",
+  justifyContent: "flex",
   margin: "1rem auto",
+  height: "fit-content",
 });
+
+export const SearchTextField = styled(TextField)(
+  ({ theme }) => ({
+    margin: "0 1rem",
+    width: "100%",
+  })
+);

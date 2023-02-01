@@ -12,7 +12,8 @@ import { getShadow } from "../../../constants/colors";
 export const PokemonListGridContainer = styled(
   Grid
 )({
-  justifyContent: "center",
+  justifyContent: "space-evenly",
+  minHeight: "100%",
 });
 
 export const PokemonListCardActionArea = styled(
@@ -25,7 +26,7 @@ export const PokemonListCardActionArea = styled(
 }));
 
 export const PokemonListGridItem = styled(Grid)({
-  margin: "1rem",
+  margin: "2rem",
   width: "12rem",
 });
 

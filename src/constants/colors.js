@@ -5,6 +5,7 @@ export const POKE_COLORS = {
   golden_yellow: "#FFDE00",
   gold_foil: "#B3A125",
   aero: "#68BEE8",
+  black: "#000000",
 };
 
 export const borderColor = "black";
@@ -30,22 +31,36 @@ export const typesColorMapping = {
   fairy: "#D685AD",
 };
 
-export const getColorsFromTypes = (types) => {
-  let colors = "";
-  if (types.length == 1) {
-    colors =
-      typesColorMapping[types[0].type.name];
-  } else {
-    colors = "linear-gradient(to right, ";
-    types.map((type, index) => {
-      colors += `${
-        typesColorMapping[type.type.name]
-      } 50% ${
-        index != types.length - 1 ? ", " : ""
-      }`;
-    });
-    colors += ")";
-  }
-  console.log(colors);
-  return colors;
+// export const getColorsFromTypes = (types) => {
+//   let colors = "";
+//   if (types.length == 1) {
+//     colors =
+//       typesColorMapping[types[0].type.name];
+//   } else {
+//     colors = "linear-gradient(to right, ";
+//     types.map((type, index) => {
+//       colors += `${
+//         typesColorMapping[type.type.name]
+//       } 50% ${
+//         index != types.length - 1 ? ", " : ""
+//       }`;
+//     });
+//     colors += ")";
+//   }
+//   return colors;
+// };
+
+export const getShadow = (
+  sidesSize,
+  cornerSize,
+  color
+) => {
+  return `-${sidesSize} 0 0 0 ${color},
+${sidesSize} 0 0 0 ${color},
+0 ${sidesSize} 0 0 ${color},
+0 -${sidesSize} 0 0 ${color},
+${cornerSize} ${cornerSize} 0 0 ${color},
+-${cornerSize} ${cornerSize} 0 0 ${color},
+-${cornerSize} -${cornerSize} 0 0 ${color},
+${cornerSize} -${cornerSize} 0 0 ${color}`;
 };
