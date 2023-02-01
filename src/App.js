@@ -33,14 +33,7 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <div
-        style={{
-          minHeight: "100vh",
-          background: theme.palette.pokemon.aero,
-        }}
-      >
-        <RouterProvider router={router} />
-      </div>
+      <RouterProvider router={router} />
     </ThemeProvider>
   );
 }

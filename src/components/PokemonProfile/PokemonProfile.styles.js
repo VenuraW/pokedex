@@ -4,5 +4,8 @@ import { Container } from "@mui/system";
 export const PokemonProfileContainer = styled(
   Container
 )({
-  height: "100vh",
+  minHeight: "100%",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
 });

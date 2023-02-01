@@ -4,9 +4,7 @@ import { Box } from "@mui/system";
 
 export const FooterPaper = styled(Paper)(
   ({ theme }) => ({
-    position: "fixed",
     width: "100%",
-    bottom: 0,
     backgroundColor: `${theme.palette.pokemon.red}`,
     borderTop: `${theme.pixel.border}`,
   })

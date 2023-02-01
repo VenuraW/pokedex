@@ -11,12 +11,10 @@ import { getShadow } from "../../../constants/colors";
 
 export const ProfileCardContainer = styled(Card)(
   ({ theme, types }) => ({
-    margin: "auto",
     maxWidth: "fit-content",
     postion: "relative",
     justifySelf: "center",
-    marginTop: "2rem",
-    marginBottom: "2rem",
+    margin: "4rem",
     borderRadius: 0,
     boxShadow: `${getShadow(
       theme.sizes.pixelBorderMedium,
