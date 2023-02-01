@@ -7,10 +7,7 @@ import {
   useNavigate,
   useParams,
 } from "react-router-dom";
-import {
-  fetchPokemonDataById,
-  getPokemonPictureURL,
-} from "../../../api/api";
+import { fetchPokemonDataById } from "../../../api/api";
 import Loading from "../../Loading/index";
 import PokemonType from "../../PokemonType";
 import * as S from "./ProfileCard.styles";
