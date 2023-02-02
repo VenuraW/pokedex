@@ -17,10 +17,6 @@ export const TypeSelector = ({
     }));
   };
 
-  const resetTypes = async () => {
-    await setSelectedTypes(availableTypes);
-  };
-
   return (
     <S.TypeSelectorGrid container>
       {Object.keys(availableTypes).map(
