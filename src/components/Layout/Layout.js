@@ -1,5 +1,4 @@
 import React, {
-  useCallback,
   useEffect,
   useState,
 } from "react";
@@ -27,40 +26,48 @@ export const Layout = () => {
   const [filterData, setFilterData] = useState(
     []
   );
-
-  // Fetches the pokemon data from the API and sets the pokeData, filterData and availableTypes
-  const fetchData = useCallback(async () => {
-    const list = await fetchKantoPokemonList();
-    list.results.forEach(async (pokemon) => {
-      const data = await fetchPokemonDataByUrl(
-        pokemon.url
-      );
-      await setPokeData((pastPoke) => [
-        ...pastPoke,
-        data,
-      ]);
-      await setFilterData((pastPoke) => [
-        ...pastPoke,
-        data,
-      ]);
-
-      let types = availableTypes;
-      data.types.forEach(async (type) => {
-        types[type.type.name] = true;
-      });
-      await setAvailableTypes(types);
-    });
-
-    await setLoading(false);
-  }, [availableTypes]);
+  const [searchData, setSearchData] = useState(
+    []
+  );
+  const [typeData, setTypeData] = useState([]);
 
   useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+    // Fetches the pokemon data from the API and sets the pokeData, filterData and availableTypes
+    const fetchData = async () => {
+      await setPokeData([]);
+      const list = await fetchKantoPokemonList();
+      list.results.forEach(async (pokemon) => {
+        const data = await fetchPokemonDataByUrl(
+          pokemon.url
+        );
+        await setPokeData((pastPoke) => [
+          ...pastPoke,
+          data,
+        ]);
+        await setFilterData((pastPoke) => [
+          ...pastPoke,
+          data,
+        ]);
 
-  // Sets the filterData based on the search terms and the first letters of the pokemon's name
-  const filterSearch = useCallback(
-    async (search) => {
+        let types = availableTypes;
+        data.types.forEach(async (type) => {
+          types[type.type.name] = 1;
+        });
+
+        await setAvailableTypes(types);
+      });
+
+      await setLoading(false);
+    };
+
+    fetchData();
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    // Sets the filterData based on the search terms and the first letters of the pokemon's name
+    const filterSearch = async (search) => {
+      console.log("hello");
       if (search.length > 0) {
         const searchData = pokeData.filter(
           (poke) =>
@@ -68,62 +75,79 @@ export const Layout = () => {
               .toLowerCase()
               .startsWith(search.toLowerCase())
         );
-        await setFilterData(searchData);
+        await setSearchData(searchData);
       } else {
-        await setFilterData(pokeData);
+        await setSearchData(pokeData);
       }
-    },
-    [pokeData]
-  );
+    };
+
+    filterSearch(search);
+    // eslint-disable-next-line
+  }, [search]);
 
   useEffect(() => {
-    filterSearch(search);
-  }, [search, filterSearch]);
-
-  // Check if types given is in selectedTypes
-  const isTypesSelected = useCallback(
-    async (types) => {
+    console.log(selectedTypes);
+    // Check if types given is in selectedTypes
+    const isTypesSelected = async (poke) => {
       let isSelected = false;
-      types.forEach((type) => {
+      poke.types.forEach((type) => {
         if (type.type.name in selectedTypes) {
           isSelected = true;
         }
       });
       return isSelected;
-    },
-    [selectedTypes]
-  );
+    };
 
-  // Filters the filterData based on pokemon types and the selectedTypes
-  const filterTypes = useCallback(
-    async (selectedTypes) => {
+    // Filters the filterData based on pokemon types and the selectedTypes
+    const filterTypes = async (selectedTypes) => {
       if (Object.keys(selectedTypes).length > 0) {
-        const searchData = await pokeData.filter(
-          async (poke) => {
-            let isSelected = false;
-            poke.types.forEach((type) => {
-              if (
-                type.type.name in selectedTypes
-              ) {
-                isSelected = true;
-              }
-            });
-            console.log(isSelected);
-            return isSelected;
-          }
-        );
-        console.log(searchData.length);
-        await setFilterData(searchData);
+        const selectePokemonBoolArray =
+          await Promise.all(
+            pokeData.map(isTypesSelected)
+          );
+
+        const selectedPokemon =
+          await pokeData.filter(
+            (poke, i) =>
+              selectePokemonBoolArray[i]
+          );
+
+        await setTypeData(selectedPokemon);
       } else {
-        await setFilterData(pokeData);
+        await setTypeData(pokeData);
       }
-    },
-    [isTypesSelected, pokeData]
-  );
+    };
+
+    filterTypes(selectedTypes);
+    // eslint-disable-next-line
+  }, [selectedTypes]);
 
   useEffect(() => {
-    filterTypes(selectedTypes);
-  }, [selectedTypes, filterTypes]);
+    const getIntersectionData = async () => {
+      let data;
+      if (searchData.length === pokeData.length) {
+        data = typeData;
+      } else if (
+        typeData.length === pokeData.length
+      ) {
+        data = searchData;
+      } else {
+        data = typeData.filter((type) => {
+          let typeInSearch = false;
+          searchData.forEach((search) => {
+            if (search.name === type.name) {
+              typeInSearch = true;
+            }
+          });
+          return typeInSearch;
+        });
+      }
+      await setFilterData(data);
+    };
+
+    getIntersectionData();
+    // eslint-disable-next-line
+  }, [searchData, typeData]);
 
   return (
     <FullPageLayoutDiv>
