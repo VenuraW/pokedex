@@ -23,13 +23,12 @@ export const Layout = () => {
     useState({});
   const [loading, setLoading] = useState(true);
   const [pokeData, setPokeData] = useState([]);
-  const [filterData, setFilterData] = useState(
-    []
-  );
-  const [searchData, setSearchData] = useState(
-    []
-  );
-  const [typeData, setTypeData] = useState([]);
+  const [filterData, setFilterData] =
+    useState(pokeData);
+  const [searchData, setSearchData] =
+    useState(pokeData);
+  const [typeData, setTypeData] =
+    useState(pokeData);
 
   useEffect(() => {
     // Fetches the pokemon data from the API and sets the pokeData, filterData and availableTypes
@@ -53,7 +52,6 @@ export const Layout = () => {
         data.types.forEach(async (type) => {
           types[type.type.name] = 1;
         });
-
         await setAvailableTypes(types);
       });
 
@@ -111,7 +109,6 @@ export const Layout = () => {
             (poke, i) =>
               selectePokemonBoolArray[i]
           );
-
         await setTypeData(selectedPokemon);
       } else {
         await setTypeData(pokeData);
@@ -162,9 +159,7 @@ export const Layout = () => {
               setSearch={setSearch}
             />
             <TypeSelector
-              availableTypes={Object.keys(
-                availableTypes
-              )}
+              availableTypes={availableTypes}
               selectedTypes={selectedTypes}
               setSelectedTypes={setSelectedTypes}
             />

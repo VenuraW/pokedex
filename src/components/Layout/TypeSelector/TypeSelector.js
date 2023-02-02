@@ -17,34 +17,29 @@ export const TypeSelector = ({
     }));
   };
 
+  const resetTypes = async () => {
+    await setSelectedTypes(availableTypes);
+  };
+
   return (
     <S.TypeSelectorGrid container>
-      <S.TypeGridItem item>
-        <S.TypeChip
-          selected={"all" in selectedTypes}
-          type={"none"}
-          label="all"
-          variant="outlined"
-          onClick={(e) =>
-            setTypes(e.target.innerText)
-          }
-        />
-      </S.TypeGridItem>
-      {availableTypes.map((type, index) => {
-        return (
-          <S.TypeGridItem key={index} item>
-            <S.TypeChip
-              selected={type in selectedTypes}
-              type={type}
-              label={type}
-              variant="outlined"
-              onClick={(e) =>
-                setTypes(e.target.innerText)
-              }
-            />
-          </S.TypeGridItem>
-        );
-      })}
+      {Object.keys(availableTypes).map(
+        (type, index) => {
+          return (
+            <S.TypeGridItem key={index} item>
+              <S.TypeChip
+                selected={type in selectedTypes}
+                type={type}
+                label={type}
+                variant="outlined"
+                onClick={(e) =>
+                  setTypes(e.target.innerText)
+                }
+              />
+            </S.TypeGridItem>
+          );
+        }
+      )}
     </S.TypeSelectorGrid>
   );
 };
