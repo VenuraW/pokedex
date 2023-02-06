@@ -16,7 +16,9 @@ export const Footer = () => {
             variant="caption"
             color="white"
           >
-            WAO Studios Copyright ©2023
+            Created by Venura. Pokémon and Pokémon
+            character names are trademarks of
+            Nintendo.
           </Typography>
         </S.FooterBox>
       </Container>
