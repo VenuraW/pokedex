@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Paper } from "@mui/material";
+import { Paper, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 
 export const FooterPaper = styled(Paper)(
@@ -16,3 +16,9 @@ export const FooterBox = styled(Box)({
   marginBottom: "0.5rem",
   marginTop: "0.5rem",
 });
+
+export const FooterTypography = styled(
+  Typography
+)(({ theme }) => ({
+  textTransform: "none",
+}));

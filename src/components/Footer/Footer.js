@@ -12,14 +12,14 @@ export const Footer = () => {
     >
       <Container maxWidth="lg">
         <S.FooterBox>
-          <Typography
+          <S.FooterTypography
             variant="caption"
             color="white"
           >
-            Created by Venura. Pokémon and Pokémon
+            created by Venura. pokémon and pokémon
             character names are trademarks of
             Nintendo.
-          </Typography>
+          </S.FooterTypography>
         </S.FooterBox>
       </Container>
     </S.FooterPaper>
