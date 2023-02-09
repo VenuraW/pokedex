@@ -34,9 +34,7 @@ export const ProfileCard = () => {
   if (loading) return <Loading />;
 
   return (
-    <S.ProfileCardContainer
-      types={pokeData.types}
-    >
+    <S.ProfileCardContainer>
       <S.ProfileCardContent>
         <S.ProfileGrid container>
           <Grid item>

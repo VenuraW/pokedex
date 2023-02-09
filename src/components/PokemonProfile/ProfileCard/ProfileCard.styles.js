@@ -10,7 +10,7 @@ import {
 import { getShadow } from "../../../constants/colors";
 
 export const ProfileCardContainer = styled(Card)(
-  ({ theme, types }) => ({
+  ({ theme }) => ({
     maxWidth: "fit-content",
     postion: "relative",
     justifySelf: "center",
