@@ -23,7 +23,10 @@ export const Header = () => {
           </S.HeaderTypography>
         </S.HeaderToolbar>
         <S.IconBox>
-          <S.BackpackIconButton aria-label="backpack">
+          <S.BackpackIconButton
+            aria-label="backpack"
+            onClick={() => navigate("/backpack")}
+          >
             <S.BackpackBadge
               color="secondary"
               variant="dot"
