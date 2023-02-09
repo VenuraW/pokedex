@@ -1,3 +1,4 @@
+import BackpackIcon from "@mui/icons-material/Backpack";
 import { Container } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -18,9 +19,19 @@ export const Header = () => {
             alt="pokemon-logo"
           />
           <S.HeaderTypography variant="h6">
-            PokeDex
+            PokePost
           </S.HeaderTypography>
         </S.HeaderToolbar>
+        <S.IconBox>
+          <S.BackpackIconButton aria-label="backpack">
+            <S.BackpackBadge
+              color="secondary"
+              variant="dot"
+            >
+              <BackpackIcon fontSize="large" />
+            </S.BackpackBadge>
+          </S.BackpackIconButton>
+        </S.IconBox>
       </Container>
     </S.HeaderAppBar>
   );
