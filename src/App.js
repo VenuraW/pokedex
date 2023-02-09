@@ -21,6 +21,9 @@ const theme = createTheme({
     primary: {
       main: `${POKE_COLORS.cerulean_blue}`,
     },
+    secondary: {
+      main: `${POKE_COLORS.golden_yellow}`,
+    },
     pokemon: POKE_COLORS,
   },
   sizes: sizes,
