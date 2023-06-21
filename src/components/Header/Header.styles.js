@@ -49,7 +49,7 @@ export const IconBox = styled(Box)(
     position: "absolute",
     right: "2rem",
     top: "2rem",
-    backgroundColor: `${theme.palette.pokemon.boston_red}`,
+    backgroundColor: `${theme.palette.pokemon.red}`,
     boxShadow: `${getShadow(
       theme.sizes.pixelBorderSmall,
       theme.sizes.pixelBorderExtraSmall,

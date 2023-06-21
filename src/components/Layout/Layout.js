@@ -54,7 +54,6 @@ export const Layout = () => {
         });
         await setAvailableTypes(types);
       });
-
       await setLoading(false);
     };
 
@@ -65,15 +64,14 @@ export const Layout = () => {
   useEffect(() => {
     // Sets the filterData based on the search terms and the first letters of the pokemon's name
     const filterSearch = async (search) => {
-      console.log("hello");
       if (search.length > 0) {
-        const searchData = pokeData.filter(
+        const searchPokemon = pokeData.filter(
           (poke) =>
             poke.name
               .toLowerCase()
               .startsWith(search.toLowerCase())
         );
-        await setSearchData(searchData);
+        await setSearchData(searchPokemon);
       } else {
         await setSearchData(pokeData);
       }
@@ -84,7 +82,6 @@ export const Layout = () => {
   }, [search]);
 
   useEffect(() => {
-    console.log(selectedTypes);
     // Check if types given is in selectedTypes
     const isTypesSelected = async (poke) => {
       let isSelected = false;
@@ -122,28 +119,33 @@ export const Layout = () => {
   useEffect(() => {
     const getIntersectionData = async () => {
       let data;
-      if (searchData.length === pokeData.length) {
+      if (
+        searchData.length === 0 ||
+        typeData.length === 0
+      ) {
+        data = [];
+      } else if (
+        searchData.length === pokeData.length
+      ) {
         data = typeData;
       } else if (
         typeData.length === pokeData.length
       ) {
         data = searchData;
       } else {
-        data = typeData.filter((type) => {
-          let typeInSearch = false;
-          searchData.forEach((search) => {
-            if (search.name === type.name) {
-              typeInSearch = true;
-            }
-          });
-          return typeInSearch;
+        let typePokemon = {};
+        typeData.forEach((type) => {
+          typePokemon[type.name] = 1;
+        });
+
+        data = searchData.filter((search) => {
+          return search.name in typePokemon;
         });
       }
-      await setFilterData(data);
+      await setFilterData(() => data);
     };
 
     getIntersectionData();
-    // eslint-disable-next-line
   }, [searchData, typeData]);
 
   return (

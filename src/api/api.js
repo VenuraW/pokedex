@@ -28,7 +28,7 @@ const fetchPokeData = (url) => {
       }
     });
   } catch (error) {
-    console.log("hello");
+    console.log(error);
   }
 };
 

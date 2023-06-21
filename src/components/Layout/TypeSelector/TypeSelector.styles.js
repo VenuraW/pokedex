@@ -24,7 +24,6 @@ export const TypeChip = styled(Chip)(
   ({ theme, type, selected }) => ({
     borderRadius: 0,
     border: 0,
-    // color: `${console.log(type, selected)}`,
     boxShadow: `${getShadow(
       theme.sizes.pixelBorderSmall,
       theme.sizes.pixelBorderExtraSmall,
